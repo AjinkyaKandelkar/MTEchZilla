@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <header>
+    <!-- place navbar here -->
+  </header>
+  <main>
+
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <form class="form">
+          <div class="card">
+            <div class="card-header fw-bold text-center fs-4 bg-primary text-white">
+              Signup
+            </div>
+            <div class="card-body">
+  
+              <label class="form-label" for="email">Email:</label>
+              <input class="form-control" type="email" id="email" name="email">
+            
+              <label class="form-label mt-3" for="password">Password:</label>
+              <input class="form-control" type="password" id="password" name="password">
+              <div class="text-end">
+                <button class="btn btn-info text-white  mt-4 " type="button" id="submitData">Signup</button>
+              </div>
+              <div class="mt-3 ">
+                Already a user please <a href="/index.html"> Login </a> 
+              </div>
+            </div>
+  
+          </div>
+        </form>
+  
+    </div>
+
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-analytics.js";
+        import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-auth.js";
+
+        const firebaseConfig = {
+        apiKey: "AIzaSyAOGSSS9s-EvjsEmOXTQNJ3eFI6cc4nvx0",
+        authDomain: "timerapp-5b63c.firebaseapp.com",
+        projectId: "timerapp-5b63c",
+        storageBucket: "timerapp-5b63c.appspot.com",
+        messagingSenderId: "10622246309",
+        appId: "1:10622246309:web:874b02d03d82aed06c9c4c",
+        measurementId: "G-CCYZWP5MG6",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        const auth = getAuth();
+
+        submitData.addEventListener("click", (e) => {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+
+            const user = userCredential.user;
+            const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+
+          })
+
+          Toast.fire({
+            icon: 'success',
+            title: 'Signed in successfully'
+
+          })
+          
+          window.location.href="/homepage.html";
+          
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            var matches = errorMessage.match(/\((.*?)\)/g);
+
+            // ..
+
+            const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+
+          })
+
+          Toast.fire({
+            icon: 'error',
+            title: matches[0],
+          })
+
+        });
+
+        });
+    </script>
+</body>
+
+</html>

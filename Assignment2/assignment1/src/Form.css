@@ -1,0 +1,26 @@
+.card
+{
+    --bs-card-color:white;
+    --bs-card-bg: #0d1117 ;
+
+}
+.img-fluid
+{
+    width: 60%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+}
+.card-header
+{
+    color: #3F84E4;
+    font-size: 1rem;
+}
+.username
+{
+    font-size: 2rem;
+    color: white;
+}
+.btn
+{
+    --bs-btn-padding-x: 4.375rem;
+}

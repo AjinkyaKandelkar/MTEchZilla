@@ -1,0 +1,15 @@
+.btn {
+    --bs-btn-padding-x: 1.25rem;
+    --bs-btn-padding-y: 0.375rem;
+    --bs-btn-font-family: ;
+    --bs-btn-font-size: 1re;
+    --bs-btn-font-weight: 500;
+    --bs-btn-bg: #0dcaf0 !important;
+}
+
+
+.card {
+    --bs-card-spacer-y: 3rem;
+    --bs-card-spacer-x: 5rem;
+    
+}
